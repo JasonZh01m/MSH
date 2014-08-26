@@ -21,7 +21,7 @@ public class EncodingIntereptor extends AbstractInterceptor {
 		ActionContext actionContext = invocation.getInvocationContext();
 		HttpServletRequest request = (HttpServletRequest) actionContext
 				.get(StrutsStatics.HTTP_REQUEST);
-		System.out.println("##进入<<EncodingInterceptor>>##");
+//		System.out.println("##进入<<EncodingInterceptor>>##");
 		/**
 		 * 此方法体对GET 和 POST方法均可
 		 */

@@ -100,15 +100,31 @@ public class PayrollrecordDAO extends HibernateDaoSupport {
 	}
 	
 	/**
+	 * Find All month by emp
+	 * @return
+	 */
+	public List<Integer> findAllMonthByEmp(String emploginId) {
+		try {
+			log.debug("getting all months by emp");
+			String queryString = "select month from Payrollrecord where emp_emploginid = ? order by month desc";
+			return getHibernateTemplate().find(queryString, emploginId);
+		} catch (RuntimeException re) {
+			log.error("get failed", re);
+			throw re;
+		}
+	}
+	
+	
+	/**
 	 * Find Payroll by emp
 	 * @param emploingId
 	 * @return
 	 */
-	public List findByEmp(String emploingId) {
+	public List findByEmpAndMonth(String emploingId, Integer month) {
 		try {
 			log.debug("getting Payrollrecord by emp");
-			String queryString = "from Payrollrecord where emp_emploginid = ? order by month desc";
-			return getHibernateTemplate().find(queryString, emploingId);
+			String queryString = "from Payrollrecord where emp_emploginid = ? and month = ?";
+			return getHibernateTemplate().find(queryString, emploingId, month);
 		} catch (RuntimeException re) {
 			log.error("get failed", re);
 			throw re;

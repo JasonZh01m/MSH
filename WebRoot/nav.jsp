@@ -88,6 +88,12 @@
 									 <a href="MyEmpInfoPage.jsp">My HR Info</a>
 								</li>
 								<li>
+									 <a href="toMyPayrollPage">My Payroll</a>
+								</li>
+								<li>
+									 <a href="loadMyVacationInfoPage">My Vacation</a>
+								</li>
+								<li>
 									 <a href="absenceRequestAction_loadRequestPage">Request</a>
 								</li>
 								

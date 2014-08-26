@@ -16,7 +16,7 @@ public class AdminHRFinanAuthorizationInterceptor extends AbstractInterceptor{
 	@Override
 	public String intercept(ActionInvocation invocation) throws Exception {
 		// TODO Auto-generated method stub
-		System.out.println("##进入<<AdminHRFinanAuthorizationInterceptor>>##");
+//		System.out.println("##进入<<AdminHRFinanAuthorizationInterceptor>>##");
 		Map<String, Object> session = invocation.getInvocationContext().getSession();
 		
 		Login login = (Login) session.get("login");

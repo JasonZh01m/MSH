@@ -16,7 +16,7 @@ public class NormalAuthorizationInterceptor extends AbstractInterceptor{
 	@Override
 	public String intercept(ActionInvocation invocation) throws Exception {
 		// TODO Auto-generated method stub
-		System.out.println("##进入<<NormalAuthorizationInterceptor>>##");
+//		System.out.println("##进入<<NormalAuthorizationInterceptor>>##");
 		Map<String, Object> session = invocation.getInvocationContext().getSession();
 		
 		Login login = (Login) session.get("login");

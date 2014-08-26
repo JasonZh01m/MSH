@@ -85,7 +85,6 @@ public class testPayrollRecord {
 //		  
 //		  System.out.println("startDate: " + sdf.format(bp.getStartDate()) + "\tendDate: " + sdf.format(bp.getEndDate()));
 		  
-		  
 		 /* String loginids = "'abbys','alicey','alicez','alisal'";
 		  payrollrecordDAO.updatePayDate("2013-03-11", loginids);*/
 //		  Basesalaryproperties bp = bpDao.findLastCreated();
@@ -95,12 +94,22 @@ public class testPayrollRecord {
 		  
 //		  Payrollrecord pr = payrollrecordDAO.findByEmpAndDate("jasonzh", "2014-04-01", "2014-04-30");
 //		  System.out.println(pr.getEmpEmpLoginId() + "\t" + pr.getDepartmentName());
-		  List<Payrollrecord> pys = payrollrecordDAO.findByEmp("abbys");
-		  System.out.println(pys.size());
-		  for (Payrollrecord pr : pys) {
-			System.out.println(pr.getEmpEmpLoginId() + "\t" + pr.getMonth() + "\t" + pr.getPayrollNote());
-		  }
+//		  List<Payrollrecord> pys = payrollrecordDAO.findByEmpAndDate(empLoginId, startDate, endDate)("abbys");
+		  List<Integer> months = payrollrecordDAO.findAllMonthByEmp("abbys");
 		  
+//		  System.out.println(pys.size());
+//		  for (Payrollrecord pr : pys) {
+//			System.out.println(pr.getEmpEmpLoginId() + "\t" + pr.getMonth() + "\t" + pr.getPayrollNote());
+//		  }
+		for (Integer i : months) {
+			System.out.println(i);
+		}
+		
+		List<Payrollrecord> prs = payrollrecordDAO.findByEmpAndMonth("abbys", 201408);
+		  
+		System.out.println("prs.size(): " + prs.size());
+		System.out.println(prs.get(0).getBaseSalary());
+		
 	}
 	
 }

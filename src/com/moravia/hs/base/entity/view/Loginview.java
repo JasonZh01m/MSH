@@ -40,6 +40,7 @@ public class Loginview implements java.io.Serializable {
 //		this.password = password;
 //		this.empLoginId = empLoginId;
 //	}
+	
 
 	// Property accessors
 	@GenericGenerator(name = "generator", strategy = "increment")

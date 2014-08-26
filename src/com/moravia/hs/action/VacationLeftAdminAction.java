@@ -41,12 +41,21 @@ public class VacationLeftAdminAction extends BaseAction {
 	private VacationtypeDAO vacationtypeDAO;
 
 	private VacationLeftAdminEntity vLeftAdminEntity;
+	private VacationLeftAdminEntity myvacationEntity;
 	private VacationLeftAdminEntity vacationLeftAdminEntity;
 	private String request_pageno;
 	
 	private String vacationinfo_emploginid;
 	
 	
+	public VacationLeftAdminEntity getMyvacationEntity() {
+		return myvacationEntity;
+	}
+
+	public void setMyvacationEntity(VacationLeftAdminEntity myvacationEntity) {
+		this.myvacationEntity = myvacationEntity;
+	}
+
 	public String getRequest_pageno() {
 		return request_pageno;
 	}
@@ -179,6 +188,88 @@ public class VacationLeftAdminAction extends BaseAction {
 		return SUCCESS;
 	}
 	
+	/**
+	 * This is Load My Vacation Left/Used Info page.
+	 * @return
+	 */
+	public String loadMyVacationInfoPage() {
+		System.out.println("进入 loadMyVacationInfoPage() 方法");
+		Map<String, Object> session = getSession();
+		Login login = (Login) session.get("login");
+		
+		List<Compensatoryleaveinfo> compens = compensatoryleaveinfoDAO.findByEmp(login.getEmp());
+
+		List<String[]> compenList = new ArrayList<String[]>();
+		
+		VacationLeftAdminEntity vlan = new VacationLeftAdminEntity();
+		vlan.setEmploginid(login.getEmp().getEmpLoginId());
+		Date date = new Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		Calendar cal1 = Calendar.getInstance();
+		Calendar cal2 = Calendar.getInstance();
+		
+		String[] compenArr;
+		int count = 1;
+		long diff;
+		double diffDay = 0.0;
+		for (Compensatoryleaveinfo cominfo : compens) {
+			cal2.setTime(cominfo.getExpirationDate());
+			diff = cal2.getTimeInMillis() - cal1.getTimeInMillis();
+			
+			diffDay = diff / (24 * 60 * 60 * 1000);
+			
+			compenArr = new String[6];
+			compenArr[0] = count++ + "";
+			compenArr[1] = cominfo.getCompensatoryLeaveLeft() + "";
+			compenArr[2] = sdf.format(cominfo.getExpirationDate());
+			compenArr[3] = sdf.format(cominfo.getCreateDate());
+			compenArr[4] = cominfo.getCompensatoryLeaveDesc();
+			if(cominfo.getExpirationDate().compareTo(date) < 0) {
+				compenArr[5] = "danger";
+			} else if (diffDay < 10){
+				compenArr[5] = "warning";
+			}
+			compenList.add(compenArr);
+		}
+		
+		vlan.setCompensatorys(compenList);
+		int pageSize = login.getPageBean().getPageSize();
+		int page = 0;
+		PageBean vadminPB = vacationchangerecordDAO.findPageBeanByEmp(login.getEmp().getEmpLoginId(), pageSize, page);
+		List<Vacationchangerecord> vcs = vadminPB.getList();
+		List<String[]> histories = new ArrayList<>();
+		String[] historyArr;
+		int count2 = 1;
+		for (Vacationchangerecord vc : vcs) {
+			String vacationName = vc.getVacationtype() != null ? vc.getVacationtype().getVacationTypeName() : "";
+			if(vacationName.equals("Annual_Leave")) {
+				vacationName = "Annual";
+			} else if(vacationName.equals("Compensatory_Leave")) {
+				vacationName = "Compen";
+			} else {
+				vacationName = "null";
+			}
+			
+			historyArr = new String[7];
+			historyArr[0] = count2++ + "";
+			historyArr[1] = vc.getVacationAddOrMinus() != null && vc.getVacationAddOrMinus() == 1 ? "+" : "-";
+			historyArr[2] = vc.getChangeHours() + "";
+			historyArr[3] = vacationName;
+			historyArr[4] = vc.getChangeBy();
+			historyArr[5] = sdf.format(vc.getCreateDate());
+			historyArr[6] = vc.getChangeReason();
+			histories.add(historyArr);
+		}
+		vlan.setHistories(histories);
+		
+		vlan.setTotalpage(vadminPB.getTotalPage());
+		
+		vlan.setCompenTotalLeft(compensatoryleaveinfoDAO.findTotalCompensatoryLeaveLeft(login.getEmp(), sdf.format(date)));
+		vlan.setAnnualTotalLeft(login.getEmp().getAnnualLeaveLeft());
+		session.put("myvacationinfo", vlan);
+		
+		return SUCCESS;
+	}
 	
 	/**
 	 * Add a compensatory record
@@ -259,6 +350,7 @@ public class VacationLeftAdminAction extends BaseAction {
 		
 		Emp loginEmp = login.getEmp();
 		System.out.println("进入getVacationLeftInfo 方法》》》 RoleID: " + loginEmp.getRole().getSysRoleId());
+		System.out.println("&&&#vacationinfo_emploginid: ###: " + vacationinfo_emploginid);
 		if(loginEmp.getRole().getSysRoleId() > 3) { 
 			// 权限在3以上，即：Manager 和 Normal
 			if(vacationinfo_emploginid != null && !vacationinfo_emploginid.trim().equalsIgnoreCase(loginEmp.getEmpLoginId())) {
@@ -354,6 +446,67 @@ public class VacationLeftAdminAction extends BaseAction {
 		session.put("vacationAdminObject", vlan);	// 加入到session中，防止刷新时出现bug
 		
 		vLeftAdminEntity = vlan;
+		
+		return SUCCESS;
+	}
+	
+	
+	/**
+	 * getVacationLeftInfo
+	 * @return
+	 */
+	public String getMyVacationInfoPagination() {
+		Map<String, Object> session = getSession();
+		
+		Login login = (Login) session.get("login");
+		
+		Emp searchEmp = login.getEmp();
+		
+		List<Compensatoryleaveinfo> compens = compensatoryleaveinfoDAO.findByEmp(searchEmp);
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		Date date = new Date();
+		
+		VacationLeftAdminEntity vlan = new VacationLeftAdminEntity();
+		vlan.setEmploginid(searchEmp.getEmpLoginId());
+
+		int pageSize = login.getPageBean().getPageSize();
+		int page = request_pageno != null && request_pageno != "" ? Integer.parseInt(request_pageno.trim()) : 0;	// 根据页面传递过来的pageNo来筛选数据
+		System.out.println("request_pageno: " + request_pageno);
+		
+		if(page == 0) {
+			System.out.println("getVacationLeftInfo 方法内部---ajax 请求 page is : " + page);
+		}
+		
+		PageBean vadminPB = vacationchangerecordDAO.findPageBeanByEmp(searchEmp.getEmpLoginId(), pageSize, page);
+		List<Vacationchangerecord> vcs = vadminPB.getList();
+		List<String[]> histories = new ArrayList<>();
+		String[] historyArr;
+		int count2 = 1;
+		for (Vacationchangerecord vc : vcs) {
+			String vacationName = vc.getVacationtype() != null ? vc.getVacationtype().getVacationTypeName() : "";
+			if(vacationName.equals("Annual_Leave")) {
+				vacationName = "Annual";
+			} else if(vacationName.equals("Compensatory_Leave")) {
+				vacationName = "Compensatory";
+			} else {
+				vacationName = "null";
+			}
+			
+			historyArr = new String[7];
+			historyArr[0] = count2++ + "";
+			historyArr[1] = vc.getVacationAddOrMinus() != null && vc.getVacationAddOrMinus() == 1 ? "+" : "-";
+			historyArr[2] = vc.getChangeHours() + "";
+			historyArr[3] = vacationName;
+			historyArr[4] = vc.getChangeBy();
+			historyArr[5] = sdf.format(vc.getCreateDate());
+			historyArr[6] = vc.getChangeReason();
+			histories.add(historyArr);
+		}
+		
+		vlan.setHistories(histories);
+		vlan.setTotalpage(vadminPB.getTotalPage());
+		
+		myvacationEntity = vlan;
 		
 		return SUCCESS;
 	}

@@ -284,6 +284,20 @@
 			</result>
 		</action>
 		
+		<action name="loadMyVacationInfoPage" class="vacationLeftAdminAction" method="loadMyVacationInfoPage">
+			<result type="redirect">
+				MyVacationInfo.jsp
+			</result>
+			<interceptor-ref name="NormalAuthStack"></interceptor-ref>
+		</action>
+		
+		
+		<action name="toMyPayrollPage" class="myPayrollAction" method="toMyPayrollPage">
+			<result type="redirect">
+				MyPayrollPage.jsp
+			</result>
+			<interceptor-ref name="NormalAuthStack"></interceptor-ref>
+		</action>
 		
 		
         <action name ="testAction1" class="testAction1">
@@ -329,7 +343,7 @@
     	<!-- 设置 “普通权限需求” 为默认拦截器 -->
 		<default-interceptor-ref name="NormalAuthStack"></default-interceptor-ref>
     
-            <action name="getData" class="dataAction" method="getData">
+            <!-- <action name="getData" class="dataAction" method="getData">
 	    		<result type="json">
 	    			<param name="includeProperties">
 	    				name,age
@@ -349,7 +363,9 @@
 	    				users.*
 	    			</param>
 	    		</result>
-	    	</action>
+	    	</action> -->
+	    	
+	    	
 	    	<action name="getArs" class="dataAction" method="getData2">
 	    		<result type="json">
 	    			<param name="excludeProperties">
@@ -438,16 +454,30 @@
 	    				vLeftAdminEntity.*
 	    			</param>
 	    		</result>
-	    		<!-- <interceptor-ref name="AdminHRFinanAuthStack"/> --> <!-- 高级权限需求 -->
+	    		<interceptor-ref name="AdminHRFinanAuthStack"/> <!-- 高级权限需求 -->
 	    	</action>
 	    	
-            <action name="getKeyword" class="searchAction" method="getKeyword">
+	    	<action name="getMyPayrollByMonth" class="myPayrollAction" method="getMyPayrollByMonth">
+				<result type="json">
+					payrollrecord.*
+				</result>
+			</action>
+	    	
+	    	<action name="getMyVacationInfoPagination" class="vacationLeftAdminAction" method="getMyVacationInfoPagination">
+	    		<result type="json">
+	    			<param name="includeProperties">
+	    				myvacationEntity.*
+	    			</param>
+	    		</result>
+	    	</action>
+	    	
+            <!-- <action name="getKeyword" class="searchAction" method="getKeyword">
 	    		<result type="json">
 	    			<param name="includeProperties">
 	                	keywords.*
 	             	</param>
 	    		</result>
-	    	</action>
+	    	</action> -->
 	    	
 	    	
    	 </package>

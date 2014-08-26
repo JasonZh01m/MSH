@@ -201,10 +201,6 @@ public class SaveOrUpdateEmpInfoAction extends BaseAction {
 		this.eeip_onjob = eeip_onjob;
 	}
 
-	public void setEeip_loginid(String eeip_loginid) {
-		this.eeip_loginid = eeip_loginid;
-	}
-
 	// public void setEeip_withprobation(String eeip_withprobation) {
 	// this.eeip_withprobation = eeip_withprobation;
 	// }
@@ -212,6 +208,14 @@ public class SaveOrUpdateEmpInfoAction extends BaseAction {
 	// public void setEeip_onjob(String eeip_onjob) {
 	// this.eeip_onjob = eeip_onjob;
 	// }
+
+	public String getEeip_loginid() {
+		return eeip_loginid;
+	}
+
+	public void setEeip_loginid(String eeip_loginid) {
+		this.eeip_loginid = eeip_loginid;
+	}
 
 	public void setEeip_chinesename(String eeip_chinesename) {
 		this.eeip_chinesename = eeip_chinesename;
@@ -337,16 +341,19 @@ public class SaveOrUpdateEmpInfoAction extends BaseAction {
 		if(operationFlag.trim().equals("UpdateEmpInfo")) {
 			//Update Emp Info
 			// System.out.println("Operation: update Emp Info");
-			Emp emp = (Emp) session.get("eip_emp");
+			System.out.println("eeip_loginid: " + eeip_loginid);
+			Emp emp = empDAO.findByLoginName(eeip_loginid.trim());
+			
 			if(emp == null) {
+				session.put("globalError", "用户不存在");
 				return ERROR;
 			}
 			
 			//判断是否需要记录empchangerecord
 			boolean flag = false;  //false 表示不需要生成新的empchangerecord记录
-			if(!emp.getEmpLoginId().equals(eeip_loginid.trim())) {
+			/*if(!emp.getEmpLoginId().equals(eeip_loginid.trim())) {
 				flag = true;
-			}
+			}*/
 			if(!emp.getNameChinese().equals(eeip_chinesename.trim())) {
 				flag = true;
 			}
@@ -443,7 +450,6 @@ public class SaveOrUpdateEmpInfoAction extends BaseAction {
 			emp.setNameChinese(eeip_chinesename.trim());
 			
 			emp.setNameEnglish(eeip_englishname.trim());
-			emp.setEmpLoginId(eeip_loginid.trim());
 			emp.setGender(eeip_gender.trim());
 			if(eeip_birthday.trim().length() > 0) {
 				// System.out.println("test Chinese : 测试中文");
