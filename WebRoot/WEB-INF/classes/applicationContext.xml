@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="  
+     http://www.springframework.org/schema/beans   
+     http://www.springframework.org/schema/beans/spring-beans-3.0.xsd  
+     http://www.springframework.org/schema/tx   
+     http://www.springframework.org/schema/tx/spring-tx-3.0.xsd  
+     http://www.springframework.org/schema/aop   
+     http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+     http://www.springframework.org/schema/context  
+     http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver">
+		</property>
+		<property name="url" value="jdbc:mysql://192.168.1.102:3306/hr_finance2">
+		</property>
+		<property name="username" value="root"></property>
+		<property name="password" value="MSH#3P@w0"></property>
+		<property name="defaultAutoCommit" value="true" />
+		<property name="maxActive" value="120" />
+	</bean>
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"></property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
+				<prop key="hibernate.show_sql">false</prop> 
+				<prop key="hibernate.format_sql">true</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+				<prop key="hibernate.jdbc.batch_size">50</prop>
+				<prop key="hibernate.cache.use_second_level_cache">false</prop>
+				<!-- <property name="hibernate.jdbc.batch_size" value="50"/> <property 
+					name="hibernate.cache.use_second_level_cache" value="false"/> -->
+			</props>
+		</property>
+		<!-- Scan packages for entity with Annotation -->
+		<property name="packagesToScan">
+			<list>
+				<value>com.moravia.hs.base.entity</value>
+				<value>com.moravia.hs.base.entity.view</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- Transaction Manager -->
+	<!-- <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager"> 
+		<property name="dataSource"> <ref bean="dataSource"/> </property> </bean> 
+		<tx:annotation-driven transaction-manager="transactionManager"/> -->
+
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<!-- <tx:annotation-driven transaction-manager="transactionManager"/> -->
+	<!-- <tx:advice id="txAdvice" transaction-manager="transactionManager"> 
+		<tx:attributes> <tx:method name="find*" propagation="REQUIRED" read-only="true" 
+		rollback-for="Exception" /> <tx:method name="save" propagation="REQUIRED" 
+		read-only="false" /> </tx:attributes> </tx:advice> -->
+
+	<!-- <aop:config proxy-target-class="true"> -->
+
+
+	<!-- scans the classpath for annotated components (including @Repostory 
+		and @Service @Controller that will be auto-registered as Spring beans -->
+	<context:annotation-config />
+	<context:component-scan base-package="com.moravia.hs.action" />
+	<context:component-scan base-package="com.moravia.hs.action.test" />
+	<context:component-scan base-package="com.moravia.hs.base.dao" />
+
+	<!-- Entity -->
+	<!-- <bean id="pageBean" class="com.moravia.hs.base.entity.other.PageBean"></bean> -->
+
+	<!-- Dao -->
+	<bean id="hibernateDaoSupport" abstract="true"
+		class="org.springframework.orm.hibernate3.support.HibernateDaoSupport">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="authorityDAO" class="com.moravia.hs.base.dao.AuthorityDAO"
+		parent="hibernateDaoSupport" />
+	<bean id="contracttypeDAO" class="com.moravia.hs.base.dao.ContracttypeDAO"
+		parent="hibernateDaoSupport" />
+	<bean id="compensatoryleaveinfoDAO" class="com.moravia.hs.base.dao.CompensatoryleaveinfoDAO"
+		parent="hibernateDaoSupport" />
+	<bean id="costcenterDAO" class="com.moravia.hs.base.dao.CostcenterDAO"
+		parent="hibernateDaoSupport" />
+	<bean id="departmentDAO" class="com.moravia.hs.base.dao.DepartmentDAO"
+		parent="hibernateDaoSupport" />
+	<bean id="empchangerecordDAO" class="com.moravia.hs.base.dao.EmpchangerecordDAO"
+		parent="hibernateDaoSupport" />
+	<bean id="empDAO" class="com.moravia.hs.base.dao.EmpDAO" parent="hibernateDaoSupport" />
+	<bean id="emptypeDAO" class="com.moravia.hs.base.dao.EmptypeDAO"
+		parent="hibernateDaoSupport" />
+	<bean id="absencerecordDAO" class="com.moravia.hs.base.dao.AbsencerecordDAO"
+		parent="hibernateDaoSupport" />
+	<bean id="loginviewDAO" class="com.moravia.hs.base.dao.LoginviewDAO"
+		parent="hibernateDaoSupport" />
+	<bean id="mboDAO" class="com.moravia.hs.base.dao.MboDAO" parent="hibernateDaoSupport" />
+	<bean id="payrollrecordDAO" class="com.moravia.hs.base.dao.PayrollrecordDAO"
+		parent="hibernateDaoSupport" />
+	<bean id="positiontitleDAO" class="com.moravia.hs.base.dao.PositiontitleDAO"
+		parent="hibernateDaoSupport" />
+	<bean id="roleauthDAO" class="com.moravia.hs.base.dao.RoleauthDAO"
+		parent="hibernateDaoSupport" />
+	<bean id="roleDAO" class="com.moravia.hs.base.dao.RoleDAO" parent="hibernateDaoSupport" />
+	<bean id="vacationchangerecordDAO" class="com.moravia.hs.base.dao.VacationchangerecordDAO"
+		parent="hibernateDaoSupport" />
+	<bean id="vacationtypeDAO" class="com.moravia.hs.base.dao.VacationtypeDAO"
+		parent="hibernateDaoSupport" />
+	<bean id="timesheetDAO" class="com.moravia.hs.base.dao.TimesheetDAO"
+		parent="hibernateDaoSupport" />
+	<bean id="basesalarypropertiesDAO" class="com.moravia.hs.base.dao.BasesalarypropertiesDAO"
+		parent="hibernateDaoSupport" />
+	<bean id="baseincomtaxDAO" class="com.moravia.hs.base.dao.BaseincomtaxDAO"
+		parent="hibernateDaoSupport" />
+	<bean id="basesocialinsuranceDAO" class="com.moravia.hs.base.dao.BasesocialinsuranceDAO"
+		parent="hibernateDaoSupport" />
+	<bean id="salaryviewDAO" class="com.moravia.hs.base.dao.SalaryviewDAO"
+		parent="hibernateDaoSupport" />
+	<bean id="requeststateDAO" class="com.moravia.hs.base.dao.RequeststateDAO"
+		parent="hibernateDaoSupport" />
+	<bean id="tokenAbsenceDAO" class="com.moravia.hs.base.dao.TokenAbsenceDAO"
+		parent="hibernateDaoSupport" />
+	<bean id="tokenOvertimeDAO" class="com.moravia.hs.base.dao.TokenOvertimeDAO"
+		parent="hibernateDaoSupport" />
+    <bean id="absencerequestitemDAO" class="com.moravia.hs.base.dao.AbsencerequestitemDAO"
+		parent="hibernateDaoSupport" />
+	<bean id="absencerequestlogDAO" class="com.moravia.hs.base.dao.AbsencerequestlogDAO"
+		parent="hibernateDaoSupport" />
+	<bean id="overtimerecordDAO" class="com.moravia.hs.base.dao.OvertimerecordDAO"
+		parent="hibernateDaoSupport" />
+	<bean id="overtimerequestitemDAO" class="com.moravia.hs.base.dao.OvertimerequestitemDAO"
+		parent="hibernateDaoSupport" />
+	<bean id="overtimerequestlogDAO" class="com.moravia.hs.base.dao.OvertimerequestlogDAO"
+		parent="hibernateDaoSupport" />
+	<bean id="rolemenuDAO" class="com.moravia.hs.base.dao.RolemenuDAO"
+		parent="hibernateDaoSupport" />
+	<bean id="menuinfoDAO" class="com.moravia.hs.base.dao.MenuinfoDAO"
+		parent="hibernateDaoSupport" />
+	<bean id="pagination" class="com.moravia.hs.base.dao.Pagination"
+		parent="hibernateDaoSupport" />
+	<bean id="overtimeinfoviewDAO" class="com.moravia.hs.base.dao.OvertimeinfoviewDAO"
+		parent="hibernateDaoSupport" />
+	<bean id="absenceinfoviewDAO" class="com.moravia.hs.base.dao.AbsenceinfoviewDAO"
+		parent="hibernateDaoSupport" />	
+		
+	<!-- TimeSheetUtil -->
+	<bean id="timesheetUtil" class="com.moravia.hs.util.TimesheetUtil"/>
+	<bean id="spring_quartzjob" class="com.moravia.hs.util.UpdateTSTable"/>
+
+	<!-- 配置通过方法调用任务器 -->
+	<bean id="methodInvoking"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="spring_quartzjob" />
+		<property name="targetMethod" value="update"/>
+	</bean>
+
+	<!-- 表达式触发器, 指定时间执行任务 -->
+	<bean id="cronTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="methodInvoking" />
+		<property name="cronExpression">
+			<value>00 00 00,12 * * ?</value>
+		</property>
+	</bean>
+	
+	<!-- 启动任务 -->
+	<!-- <bean id="quartzFactory"
+		class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<ref local="cronTrigger" />
+			</list>
+		</property>
+	</bean> -->
+</beans>  

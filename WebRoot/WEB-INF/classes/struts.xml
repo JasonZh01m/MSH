@@ -1,0 +1,455 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE struts PUBLIC  
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"  
+    "http://struts.apache.org/dtds/struts-2.0.dtd">  
+  
+<struts>  
+    <constant name="struts.i18n.encoding" value="UTF-8"></constant>  
+    <constant name="struts.multipart.maxSize" value="20971520"/>  
+    <constant name="struts.devMode" value="true" />  
+    <!-- Internationalization -->
+    <constant name="struts.custom.i18n.resources" value="message" /> 
+    <constant name = "struts.objectFactory" value="spring"></constant>
+	<package name="default" namespace="/" extends="struts-default">
+		<interceptors>
+			<interceptor name="Encoding" class="com.moravia.hs.action.util.EncodingIntereptor"></interceptor>
+			<interceptor name ="AdminHRFinanAuthorization" class= "com.moravia.hs.action.util.AdminHRFinanAuthorizationInterceptor" />
+			<interceptor name ="NormalAuthorization" class= "com.moravia.hs.action.util.NormalAuthorizationInterceptor" />
+			
+			<!-- 高级权限需求(需要Admin，HR 和 Finance权限) -->
+			<interceptor-stack name="AdminHRFinanAuthStack">
+				<interceptor-ref name="AdminHRFinanAuthorization"></interceptor-ref>
+           		<interceptor-ref name="Encoding"></interceptor-ref>
+           		<interceptor-ref name="defaultStack"></interceptor-ref><!-- 必须引入这个，否则request不会再往下传-->  
+        	</interceptor-stack>
+        	
+        	<!-- 普通权限需求(所有人都有权限访问) -->
+        	<interceptor-stack name="NormalAuthStack">
+				<interceptor-ref name="NormalAuthorization"></interceptor-ref>
+           		<interceptor-ref name="Encoding"></interceptor-ref>
+           		<interceptor-ref name="defaultStack"></interceptor-ref><!-- 必须引入这个，否则request不会再往下传-->  
+        	</interceptor-stack>
+		</interceptors>
+		
+		<!-- 设置 “高级权限需求” 为默认拦截器 -->
+		<default-interceptor-ref name="AdminHRFinanAuthStack"></default-interceptor-ref>
+		
+		<global-results>
+   			<result name="error">error.jsp</result>
+   			<result name="login" type="redirect">login.jsp</result>
+   		</global-results>
+		
+        <action name ="login" class="loginAction">
+            <result type="redirect">index.jsp</result>
+            <result name="input" type="redirect">login.jsp</result>
+            <interceptor-ref name ="defaultStack" />
+        </action>
+        
+        <action name ="redirectLink" class="loginAction">
+            <result type="redirectAction">absenceRequestAction_loadRequestPage</result>
+            <result name="input" type="redirect">login.jsp</result>
+            <interceptor-ref name ="defaultStack" />
+        </action>
+        
+        <action name ="logoffAction" class="loginAction" method="logoff">
+            <result type="redirect">login.jsp</result>
+            <interceptor-ref name ="defaultStack" />
+        </action>
+        
+        <action name ="salaryInfoAction" class="salaryInfoAction" method="salaryCalculate">
+        	<!-- 采用dispatcher方式转发保证每一个员工的工资信息页面不会随内存内所存储信息的变化而变化 -->
+            <!-- <result type="dispatcher">SalaryInfoPage.jsp</result> -->
+            <result name="success" type="dispatcher">
+            	<param name="location">SalaryInfoPage.jsp</param>
+            </result>
+            <result type="redirect" name ="input">error.jsp</result>
+            <result type="redirect" name ="error">error.jsp</result>
+        </action>
+        
+        <action name ="savePayrollAction" class="savePayrollAction">
+            <result type="redirectAction">salaryInfoAction</result>
+            <result type="redirect" name ="error">error.jsp</result>
+        </action>
+        
+        <action name ="salarySettingAction" class="salarySettingAction">
+            <result type="redirect">SalarySettingPage.jsp</result>
+            <result type="redirect" name ="error">error.jsp</result>
+        </action>
+        
+        <action name ="saveSalarySettingAction" class="saveSalarySettingAction">
+            <!-- <result type="redirect">SalarySettingPage.jsp</result> -->
+            <result type="redirectAction">salarySettingAction</result>
+            <result type="redirect" name ="error">error.jsp</result>
+        </action>
+        
+        <action name ="saveSocialInsurInfoAction" class="saveSocialInsurInfoAction">
+            <result type="redirect">SalarySettingPage.jsp</result>
+            <result type="redirect" name ="error">error.jsp</result>
+        </action>
+        
+        <action name ="empInfoAction" class="empInfoAction">
+            <result type="redirect">EmpInfoPage.jsp</result>
+            <result type="redirect" name ="error">error.jsp</result>
+        </action>
+        
+        <action name ="toEditEmpInfoPageAction" class="toEditEmpInfoPageAction">
+            <result type="redirect">EditEmpInfoPage.jsp</result>
+            <result type="redirect" name ="error">error.jsp</result>
+        </action>
+        
+        <action name ="toCreateEmpPageAction" class="toEditEmpInfoPageAction">
+            <result type="redirect">CreateEmpPage.jsp</result>
+            <result type="redirect" name ="error">error.jsp</result>
+        </action>
+        
+        <action name ="saveOrUpdateEmpInfoAction" class="saveOrUpdateEmpInfoAction">
+        	<!-- redirectAction -->
+            <result type="redirectAction">empInfoAction</result>
+            <result type="redirect" name ="error">error.jsp</result>
+        </action>
+        
+        <action name ="createEmpAction" class="createEmpAction">
+            <result type="redirect">index.jsp</result>
+            <result type="redirect" name ="error">error.jsp</result>
+        </action>
+        
+        <action name ="summaryTsInfoAction" class="summaryTsInfoAction">
+            <!-- <result type="redirect">SummaryTsInfo.jsp</result> -->
+           <result type="redirect">SumTsInfo.jsp</result>
+            <result type="redirect" name ="error">error.jsp</result>
+        </action>
+        
+        <!-- financialStatementAction -->
+        <action name ="financialStatementAction" class="financialStatementAction">
+           <result type="redirect">FinancialStatement.jsp</result>
+            <result type="redirect" name ="error">error.jsp</result>
+        </action>
+        <action name ="toFinancialStatementInfoPageAction" class="toFinancialStatementInfoPageAction">
+           <result type="redirect">FinancialStatement.jsp</result>
+            <result type="redirect" name ="error">error.jsp</result>
+        </action>
+        <action name ="toHRBaseInfoAction" class="toHRBaseInfoAction">
+         <result type="redirect">HRBaseInfoPage.jsp</result>
+            <result type="redirect" name ="error">error.jsp</result>
+        </action>
+        <action name ="hRBaseInfoAction" class="hRBaseInfoAction">
+         <result type="redirectAction">toHRBaseInfoAction</result>
+            <result type="redirect" name ="error">error.jsp</result>
+        </action>
+        <action name ="exportExcelAction_FinancialStatement" class="exportExcelAction_FinancialStatement">
+        </action>
+        <action name ="exportExcelAction_TimeSheetTrack" class="exportExcelAction_TimeSheetTrack">
+        </action>
+        <action name ="exportExcelAction_Payroll" class="exportExcelAction_Payroll">
+        </action>
+        
+        <action name="toEmpHistoryInfoPage" class="toEmpHistoryInfoPage">
+        	<result type="redirect">EmpHistoryTrack.jsp</result>
+        </action>
+        <action name="timeSheetTrackAction" class="timeSheetTrackAction">
+        	<result type="redirect">TimeSheetTrack.jsp</result>
+        </action>
+        
+        <action name="uploadExcelFileAction" class="uploadExcelFileAction">
+        	<result name="input">error.jsp</result>
+        	<result type="redirectAction">readExcelAndUpdatePayrollAction</result>
+        	<!-- <result>success.jsp</result> -->
+        	<interceptor-ref name ="fileUpload">
+            <!-- 限制大小为5M -->
+            	<param name="maximumSize">5000000</param>
+            </interceptor-ref >
+            <interceptor-ref name="defaultStack"></interceptor-ref>
+        </action>
+        <action name="readExcelAndUpdatePayrollAction" class="readExcelAndUpdatePayrollAction">
+        	<result type="redirectAction">payrollConfirmationAction</result>
+        </action>
+        <action name="sendPayrollMailAction" class="sendPayrollMailAction">
+        	<result type="redirect">success.jsp</result>
+        </action>
+        
+        <action name="payrollConfirmationAction" class="payrollConfirmationAction">
+        	<result type="redirect">ConfirmPayrollSendEmail.jsp</result>
+        </action>
+        <action name="updateTSTableAction" class="updateTSTableAction">
+        	<result type="redirect">UpdateTSSuccess.jsp</result>
+        	<result name="input" type="redirect">error.jsp</result>
+        </action>
+
+		<!-- Request Action -->
+		<action name="absenceRequestAction_loadRequestPage" class="absenceRequestAction" method="loadRequestPage">
+			<result type="redirect">Request.jsp</result>
+			<result name="input">error.jsp</result>
+			<interceptor-ref name="NormalAuthStack"/>
+		</action>
+		
+		<action name="absenceRequestAction_requestApply" class="absenceRequestAction" method="requestApply">
+			<result type="redirect">success.jsp</result>
+			<result name="input">error.jsp</result>
+			<interceptor-ref name="NormalAuthStack"/>
+		</action>
+		
+		<action name="requestAffarisHandle" class="absenceRequestAction" method="requestAffarisHandle">
+    		<result type="redirect">
+    			success.jsp
+    		</result>
+    		<interceptor-ref name="NormalAuthStack"/>
+    	</action>
+    	
+    	<action name="loadOvertimeRequestReject" class="overtimeReApplyAction" method="loadOvertimeRequestReject">
+    		<result type="redirect">
+    			RequestOvertimeRejected.jsp
+    		</result>
+    		<interceptor-ref name="NormalAuthStack"/>
+    	</action>
+    	
+    	<action name="overtimeRequestRejectReapply" class="overtimeReApplyAction" method="reApply">
+    		<result type="redirect">
+    			success.jsp
+    		</result>
+    		<interceptor-ref name="NormalAuthStack"/>
+    	</action>
+    	
+    	<action name="cancelOvertimeRecord" class="overtimeReApplyAction" method="cancelOvertimeRecord">
+    		<result type="redirect">
+    			success.jsp
+    		</result>
+    		<interceptor-ref name="NormalAuthStack"/>
+    	</action>
+    	
+    	<action name="loadAbsenceRequestReject" class="absenceReApplyAction" method="loadAbsenceRequestReject">
+    		<result type="redirect">
+    			RequestAbsenceRejected.jsp
+    		</result>
+    		<interceptor-ref name="NormalAuthStack"/>
+    	</action>
+    	
+    	<action name="absenceRequestRejectReapply" class="absenceReApplyAction" method="reApply">
+    		<result type="redirect">
+    			success.jsp
+    		</result>
+    		<interceptor-ref name="NormalAuthStack"/>
+    	</action>
+    	
+    	<action name="cancelAbsenceRecord" class="absenceReApplyAction" method="cancelAbsenceRecord">
+    		<result type="redirect">
+    			success.jsp
+    		</result>
+    		<interceptor-ref name="NormalAuthStack"/>
+    	</action>
+    	
+    	
+    	
+    	<action name="overtimeRequest_Apply" class="overtimeRequestAction" method="overtimeRequestApply">
+    		<result type="redirect">
+    			success.jsp
+    		</result>
+    		<interceptor-ref name="NormalAuthStack"/>
+    	</action>
+    	<action name="getOvertimeRequestRecord" class="overtimeRequestAction" method="overtimeRequestRecord">
+			<result type="redirect">
+				<param name="location">RequestOvertimeItems.jsp</param>
+			</result>
+			<interceptor-ref name="NormalAuthStack"/>
+		</action>
+		
+    	<action name="overtimeRequestHandle" class="overtimeRequestAction" method="overtimeRequestHandle">
+			<result type="redirect">
+				success.jsp
+			</result>
+			<interceptor-ref name="NormalAuthStack"/>
+		</action>
+		
+		<action name="loadAbsenceOvertimeTrack" class="absenceOvertimeTrackAction" method="loadAbsenceOvertimeTrack">
+			<result type="redirect">
+				AbsenceOvertimeTrack.jsp
+			</result>
+		</action>
+		
+		<action name="getAbsenceOvertimeInfoByTime" class="absenceOvertimeTrackAction" method="getAbsenceOvertimeInfoByTime">
+			<result type="redirect">
+				AbsenceOvertimeTrack.jsp
+			</result>
+		</action>
+		
+		<action name="addVacation" class="vacationLeftAdminAction" method="addVacation">
+        	<result type="redirectAction">
+				<param name="actionName">loadVacationAdminPage</param>
+				<param name="vacationinfo_emploginid">${vacationLeftAdminEntity.emploginid}</param>
+			</result>
+        </action>
+		
+		<action name="loadVacationAdminPage" class="vacationLeftAdminAction" method="loadVacationAdminPage">
+			<result type="redirect">
+				vacationLeftAdmin.jsp
+			</result>
+		</action>
+		
+		
+		
+        <action name ="testAction1" class="testAction1">
+            <result name="success" type="dispatcher">
+            	<param name="location">testsuccess.jsp</param>
+            	<param name="parse">false</param>
+            	<param name="testGetLoginID">${testGetLoginID}</param>
+            </result>
+            <!-- <result name="input" type="redirect">error.jsp</result> -->
+        </action>
+        <action name ="testAction2" class="testAction2">
+            <result type="redirect">successs.jsp</result>
+        </action>
+        <action name ="testAction3" class="testAction3">
+            <result type="redirect">testInfo.jsp</result>
+        </action>
+    </package>
+        
+        
+        
+    <!-- package for ajax json -->
+    <package name="jsondefault" namespace ="/" extends="json-default">
+    	<interceptors>
+			<interceptor name="Encoding" class="com.moravia.hs.action.util.EncodingIntereptor"></interceptor>
+			<interceptor name ="AdminHRFinanAuthorization" class= "com.moravia.hs.action.util.AdminHRFinanAuthorizationInterceptor" />
+			<interceptor name ="NormalAuthorization" class= "com.moravia.hs.action.util.NormalAuthorizationInterceptor" />
+			
+			<!-- 高级权限需求(需要Admin，HR 和 Finance权限) -->
+			<interceptor-stack name="AdminHRFinanAuthStack">
+				<interceptor-ref name="AdminHRFinanAuthorization"></interceptor-ref>
+           		<interceptor-ref name="Encoding"></interceptor-ref>
+           		<interceptor-ref name="defaultStack"></interceptor-ref><!-- 必须引入这个，否则request不会再往下传-->  
+        	</interceptor-stack>
+        	
+        	<!-- 普通权限需求(所有人都有权限访问) -->
+        	<interceptor-stack name="NormalAuthStack">
+				<interceptor-ref name="NormalAuthorization"></interceptor-ref>
+           		<interceptor-ref name="Encoding"></interceptor-ref>
+           		<interceptor-ref name="defaultStack"></interceptor-ref><!-- 必须引入这个，否则request不会再往下传-->  
+        	</interceptor-stack>
+		</interceptors>
+    	
+    	<!-- 设置 “普通权限需求” 为默认拦截器 -->
+		<default-interceptor-ref name="NormalAuthStack"></default-interceptor-ref>
+    
+            <action name="getData" class="dataAction" method="getData">
+	    		<result type="json">
+	    			<param name="includeProperties">
+	    				name,age
+	    			</param>
+	    		</result>
+	    	</action>
+	    	<action name="getUser" class="dataAction" method="getData">
+	    		<result type="json">
+	    			<param name="excludeProperties">
+	    				user.password
+	    			</param>
+	    		</result>
+	    	</action>
+	    	<action name="getUsers" class="dataAction" method="getData">
+	    		<result type="json">
+	    			<param name="includeProperties">
+	    				users.*
+	    			</param>
+	    		</result>
+	    	</action>
+	    	<action name="getArs" class="dataAction" method="getData2">
+	    		<result type="json">
+	    			<param name="excludeProperties">
+	    				<!-- abrs.*\.requeststate, -->
+	    				abrs.*\.tokenAbsences,
+	    				abrs.*\.absencerequestitems,
+	    				abrs.*\.absencerequestlogs
+	    			</param>
+	    		</result>
+	    	</action>
+	    	<!-- Request Info Affaris -->
+	    	<action name="requestInfo" class="absenceRequestAction" method="requestInfoAffairs">
+	    		<result type="json">
+	    			<param name="includeProperties">
+	    				affairsNum,
+	    				affairAbsences.*
+	    			</param>
+	    		</result>
+	    	</action>
+	    	<!-- AbsenceRecords Absence History -->
+	    	<action name="requestInfoAbsenceHistory" class="absenceRequestAction" method="getAbsenceHistoryInfo">
+	    		<result type="json">
+	    			<param name="includeProperties">
+	    				historyAbsences.*
+	    			</param>
+	    		</result>
+	    	</action>
+	    	<!-- AbsenceRecord items -->
+	    	<action name="testrequestinfoabsencerecord" class="absenceRequestAction" method="requestInfoGetAbsenceRecord">
+	    		<result type="json">
+	    			<param name="includeProperties">
+	    				absenceInfo.*,
+	    				absenceitems.*\.vacationtype,
+	    				absenceitems.*\.absenceType,
+	    				absenceitems.*\.absenceHours,
+	    				absenceitems.*\.absenceStartTime,
+	    				absenceitems.*\.absenceStartTime
+	    			</param>
+	    		</result>
+	    	</action>
+	    	
+	    	<action name="getAbsencerequestLog" class="absenceRequestAction" method="historyInfoGetAbsencerequestLog">
+	    		<result type="json">
+	    			<param name="includeProperties">
+	    				absencerequestlogs.*
+	    			</param>
+	    		</result>
+	    	</action>
+	    	
+	    	<action name="overtimeAffaris" class="overtimeRequestAction" method="overtimeAffaris">
+	    		<result type="json">
+	    			<param name="includeProperties">
+	    				affairsNum,
+	    				overtimeEntities.*
+	    			</param>
+	    		</result>
+	    	</action>
+	    	
+	    	<action name="getOvertimeHistoryInfo" class="overtimeRequestAction" method="getOvertimeHistoryInfo">
+	    		<result type="json">
+	    			<param name="includeProperties">
+	    				overtimeHistories.*
+	    			</param>
+	    		</result>
+	    	</action>
+	    	
+	    	<action name="getOvertimeHistoryDetails" class="overtimeRequestAction" method="getOvertimeHistoryDetails">
+	    		<result type="json">
+	    			<param name="includeProperties">
+	    				historyOvertimeDetails.*
+	    			</param>
+	    		</result>
+	    	</action>
+	    	
+	    	<action name="getOvertimeHistoryTrack" class="overtimeRequestAction" method="getOvertimeHistoryTrack">
+	    		<result type="json">
+	    			<param name="includeProperties">
+	    				requestHistoryTracks.*
+	    			</param>
+	    		</result>
+	    	</action>
+	    	
+	    	<action name="getVacationLeftInfo" class="vacationLeftAdminAction" method="getVacationLeftInfo">
+	    		<result type="json">
+	    			<param name="includeProperties">
+	    				vLeftAdminEntity.*
+	    			</param>
+	    		</result>
+	    		<!-- <interceptor-ref name="AdminHRFinanAuthStack"/> --> <!-- 高级权限需求 -->
+	    	</action>
+	    	
+            <action name="getKeyword" class="searchAction" method="getKeyword">
+	    		<result type="json">
+	    			<param name="includeProperties">
+	                	keywords.*
+	             	</param>
+	    		</result>
+	    	</action>
+	    	
+	    	
+   	 </package>
+      
+</struts>  

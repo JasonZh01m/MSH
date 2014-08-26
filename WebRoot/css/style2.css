@@ -1,0 +1,315 @@
+html {
+	min-height: 100%;
+	position: relative
+}
+
+body {
+	padding-bottom: 0;
+	/* background-color: #e4e6e9; */
+	min-height: 100%;
+	font-size: 13px;
+	color: #393939;
+	line-height: 1.5
+}
+
+a {
+	text-decoration: none;
+	color: #333;
+	cursor: pointer;
+}
+
+a:hover {
+ text-decoration: none;
+ cursor: pointer;
+}
+
+ul {
+	list-style: none;
+}
+
+.main_jsp_container{
+	width: 100%;
+}
+
+.main_jsp_navbar {
+	margin-bottom: 5px;
+}
+
+
+.main_jsp_row .main_jsp_clearfix {
+	width: 100%;
+	min-height: 45px;
+	position: relative;
+	float: left;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+.main_jsp_col-md-6 {
+	background-color: rgb(242, 242, 242);
+	border-bottom-color: rgb(204, 204, 204);
+	border-bottom-style: solid;
+	border-bottom-width: 0px;
+	border-image-repeat: stretch;
+	border-image-slice: 100%;
+	border-image-source: none;
+	border-image-width: 1;
+	border-left-color: rgb(204, 204, 204);
+	border-left-style: solid;
+	border-left-width: 0px;
+	border-right-color: rgb(204, 204, 204);
+	border-right-style: solid;
+	border-right-width: 1px;
+	border-top-color: rgb(204, 204, 204);
+	border-top-style: solid;
+	border-top-width: 0px;
+	box-sizing: border-box;
+	color: rgb(57, 57, 57);
+	display: block;
+	float: left;
+	font-size: 13px;
+	height: 684px;
+	line-height: 19px;
+	position: relative;
+	width: 210px;
+	padding-right: 0px;
+	padding-left:0px;
+	padding-top: 0px;
+}
+
+
+.main_jsp_panel-heading{
+	padding-bottom: 15px;
+	padding-top: 15px;
+}
+
+.main_jsp_panel-body {
+	padding: 0px;
+	position: relative;
+	height: auto;
+}
+
+.main_jsp_panel_ul{
+	/* position: relative; */
+	padding: 0px;
+	margin: 0px;
+}
+
+.main_jsp_panel_li{
+background-color: rgb(255, 255, 255);
+background-image: none;
+background-origin: padding-box;
+background-size: auto;
+border-bottom-color: #B3B3B3;
+color: rgb(57, 57, 57);
+/* display: block; */
+font-size: 13px;
+height: 34px;
+line-height: 25px;
+list-style-image: none;
+list-style-position: outside;
+list-style-type: none;
+/* margin-left: -40px; */
+position: relative;
+text-align: left;
+/* width: 140px; */
+}
+
+.panel-footer{
+	/* position: absolute; */
+	/* right:100px; */
+	/* float: right; */
+	/* width: 100px; */
+}
+ 
+.main_jsp_sub-container{
+	width:100%;
+	height: 100%;
+}
+
+.main-content-container{
+	/* width: 85%; */
+	position: relative;
+	float:left;
+	padding-left:40px;
+	padding-right: 20px;
+	height: 90%;
+}
+.main_jsp_col-md-7 {
+	width: 1000px;
+}
+
+.main-content{
+	position: relative;
+	padding-bottom: 100px;
+}
+
+.dataTables_container{
+	/* padding: 10px; */
+	width: 1000px;
+	/* padding-top:-250px; */
+	padding-top: 70px;
+	 
+}
+
+.dataTables_wrapper{
+	padding-bottom: 20px;
+}
+
+.dataTable{
+	border-bottom-color: #333;
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+	border-left-color: #333;
+	border-left-style: solid;
+	border-left-width: 1px;
+	
+	border-right-color: #333;
+	border-right-style: solid;
+	border-right-width: 1px;
+	
+	border-top-color: #333;
+	border-top-style: solid;
+	border-top-width: 1px; 
+}
+
+.dataTables_length {
+	padding-bottom: 10px;
+	width:200px
+}
+
+.dataTables_filter {
+	padding-bottom: 10px;
+	width: 300px;
+}
+
+.dataTables_paginate{
+	padding-top: 10px;
+}
+
+.dataTables_info {
+	padding-top: 10px;
+}
+
+.date-choose{
+	width: 450px;
+	height: 35px;
+	margin-top: 10px;
+	/* margin-left: 200px; */
+} 
+.date-form-group{
+	width: 400px;
+	float: left;
+} 
+
+.control-label{
+	padding: 0px;
+	padding-top: 10px;
+	/* width: 100px; */
+	
+}
+
+.sip_form-td {
+	padding: 0px;
+}
+
+.sip_form-control{
+	height: 30px;
+	margin:3px;
+	padding: 0px;
+	padding-top: 4px;
+	width: 100px;
+    border: none;
+    cursor: default;
+    background-color: inherit;
+}
+
+.sip_form-control .editable{
+	width: 100px;
+}
+
+.ssp_form-control{
+	height: auto;
+	margin:3px;
+	padding: 0px;
+	padding-top: 4px;
+	width: 100px;
+    border: none;
+    cursor: default;
+    background-color: inherit;
+}
+
+.ssp_modal-body {
+	padding-bottom: 0px;
+	padding-top: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+	
+}
+/*error时tooltip的样式 @注2 ===------------------------------ start */
+/* .tooltip.error .tooltip-inner {
+	box-shadow: 1px 1px 3px #b94a48;
+	background-color: #b94a48;
+	color: white;
+}
+
+.tooltip.error.top .tooltip-arrow {
+	border-top-color: #b94a48;
+}
+
+.tooltip.error.right .tooltip-arrow {
+	border-right-color: #b94a48;
+}
+
+.tooltip.error.left .tooltip-arrow {
+	border-left-color: #b94a48;
+}
+
+.tooltip.error.bottom .tooltip-arrow {
+	border-bottom-color: #b94a48;
+} */
+
+.editemp_form {
+	margin-bottom: 10px;
+}
+
+.editemp_form span{
+	font-weight: bold;
+	text-align: left;
+}
+
+
+/* normal */
+.selectpicker_class{
+	height:30px;
+	margin-bottom: 10px;
+	float: right;
+}
+
+
+.selectpicker_class .bootstrap-select{
+	width: 180px;
+}
+
+
+
+.selectpicker_class label{
+	margin-right: 5px;
+}
+
+
+.input-block-level{
+	height: 30px;
+}
+
+.selectpicker {
+	padding-bottom: 4px;
+	padding-top: 4px;
+}
+
+.red-tooltip + .tooltip > .tooltip-inner{background-color: #FF6633;}
+.red-tooltip + .tooltip > .tooltip-arrow{border-top-color: #FF6633;}
+
+.selectpicker_aot_class .bootstrap-select {
+	width: 140px;
+}

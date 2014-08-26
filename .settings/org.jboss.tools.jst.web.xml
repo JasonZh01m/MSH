@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<file-systems VERSION="2.0.0" application-name="MSH"
+ model-entity="FileSystems" workspace-home="./WebRoot/WEB-INF">
+ <file-system NAME="WEB-INF" location="%workspace.home%" model-entity="FileSystemFolder"/>
+ <file-system NAME="WEB-ROOT" info="Content-Type=Web"
+  location="%workspace.home%/.." model-entity="FileSystemFolder"/>
+ <file-system NAME="src" location="%workspace.home%/../../src" model-entity="FileSystemFolder"/>
+ <file-system NAME="lib" location="%workspace.home%/lib" model-entity="FileSystemFolder"/>
+ <file-system NAME="classes" location="%workspace.home%/classes" model-entity="FileSystemFolder"/>
+ <file-system NAME="lib-javaee.jar"
+  location="D:\Program Files\MyEclipse Professional 2014\plugins\com.genuitec.eclipse.j2eedt.core_11.5.0.me201311281640\data\libraryset\EE_5\javaee.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-annotations-api.jar"
+  location="D:\Program Files\MyEclipse Professional 2014\plugins\com.genuitec.eclipse.easie.tomcat7.myeclipse_11.5.0.me201310302042\tomcat\lib\annotations-api.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-catalina-ant.jar"
+  location="D:\Program Files\MyEclipse Professional 2014\plugins\com.genuitec.eclipse.easie.tomcat7.myeclipse_11.5.0.me201310302042\tomcat\lib\catalina-ant.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-catalina-ha.jar"
+  location="D:\Program Files\MyEclipse Professional 2014\plugins\com.genuitec.eclipse.easie.tomcat7.myeclipse_11.5.0.me201310302042\tomcat\lib\catalina-ha.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-catalina-tribes.jar"
+  location="D:\Program Files\MyEclipse Professional 2014\plugins\com.genuitec.eclipse.easie.tomcat7.myeclipse_11.5.0.me201310302042\tomcat\lib\catalina-tribes.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-catalina.jar"
+  location="D:\Program Files\MyEclipse Professional 2014\plugins\com.genuitec.eclipse.easie.tomcat7.myeclipse_11.5.0.me201310302042\tomcat\lib\catalina.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-ecj-3.7.2.jar"
+  location="D:\Program Files\MyEclipse Professional 2014\plugins\com.genuitec.eclipse.easie.tomcat7.myeclipse_11.5.0.me201310302042\tomcat\lib\ecj-3.7.2.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-el-api.jar"
+  location="D:\Program Files\MyEclipse Professional 2014\plugins\com.genuitec.eclipse.easie.tomcat7.myeclipse_11.5.0.me201310302042\tomcat\lib\el-api.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-jasper-el.jar"
+  location="D:\Program Files\MyEclipse Professional 2014\plugins\com.genuitec.eclipse.easie.tomcat7.myeclipse_11.5.0.me201310302042\tomcat\lib\jasper-el.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-jasper.jar"
+  location="D:\Program Files\MyEclipse Professional 2014\plugins\com.genuitec.eclipse.easie.tomcat7.myeclipse_11.5.0.me201310302042\tomcat\lib\jasper.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-jsp-api.jar"
+  location="D:\Program Files\MyEclipse Professional 2014\plugins\com.genuitec.eclipse.easie.tomcat7.myeclipse_11.5.0.me201310302042\tomcat\lib\jsp-api.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-servlet-api.jar"
+  location="D:\Program Files\MyEclipse Professional 2014\plugins\com.genuitec.eclipse.easie.tomcat7.myeclipse_11.5.0.me201310302042\tomcat\lib\servlet-api.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-tomcat-api.jar"
+  location="D:\Program Files\MyEclipse Professional 2014\plugins\com.genuitec.eclipse.easie.tomcat7.myeclipse_11.5.0.me201310302042\tomcat\lib\tomcat-api.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-tomcat-coyote.jar"
+  location="D:\Program Files\MyEclipse Professional 2014\plugins\com.genuitec.eclipse.easie.tomcat7.myeclipse_11.5.0.me201310302042\tomcat\lib\tomcat-coyote.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-tomcat-dbcp.jar"
+  location="D:\Program Files\MyEclipse Professional 2014\plugins\com.genuitec.eclipse.easie.tomcat7.myeclipse_11.5.0.me201310302042\tomcat\lib\tomcat-dbcp.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-tomcat-i18n-es.jar"
+  location="D:\Program Files\MyEclipse Professional 2014\plugins\com.genuitec.eclipse.easie.tomcat7.myeclipse_11.5.0.me201310302042\tomcat\lib\tomcat-i18n-es.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-tomcat-i18n-fr.jar"
+  location="D:\Program Files\MyEclipse Professional 2014\plugins\com.genuitec.eclipse.easie.tomcat7.myeclipse_11.5.0.me201310302042\tomcat\lib\tomcat-i18n-fr.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-tomcat-i18n-ja.jar"
+  location="D:\Program Files\MyEclipse Professional 2014\plugins\com.genuitec.eclipse.easie.tomcat7.myeclipse_11.5.0.me201310302042\tomcat\lib\tomcat-i18n-ja.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-tomcat-jdbc.jar"
+  location="D:\Program Files\MyEclipse Professional 2014\plugins\com.genuitec.eclipse.easie.tomcat7.myeclipse_11.5.0.me201310302042\tomcat\lib\tomcat-jdbc.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-tomcat-util.jar"
+  location="D:\Program Files\MyEclipse Professional 2014\plugins\com.genuitec.eclipse.easie.tomcat7.myeclipse_11.5.0.me201310302042\tomcat\lib\tomcat-util.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-cglib-2.2.jar"
+  location="D:\Program Files\MyEclipse Professional 2014\configuration\org.eclipse.osgi\bundles\101\1\.cp\myeclipse-data\3.3\lib\core\bytecode\cglib\cglib-2.2.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-javassist-3.9.0.GA.jar"
+  location="D:\Program Files\MyEclipse Professional 2014\configuration\org.eclipse.osgi\bundles\101\1\.cp\myeclipse-data\3.3\lib\core\bytecode\javassist\javassist-3.9.0.GA.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-hibernate3.jar"
+  location="D:\Program Files\MyEclipse Professional 2014\configuration\org.eclipse.osgi\bundles\101\1\.cp\myeclipse-data\3.3\lib\core\hibernate3.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-log4j-1.2.14.jar"
+  location="D:\Program Files\MyEclipse Professional 2014\configuration\org.eclipse.osgi\bundles\101\1\.cp\myeclipse-data\3.3\lib\core\required\log4j-1.2.14.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-slf4j-api-1.5.8.jar"
+  location="D:\Program Files\MyEclipse Professional 2014\configuration\org.eclipse.osgi\bundles\101\1\.cp\myeclipse-data\3.3\lib\core\required\slf4j-api-1.5.8.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-slf4j-log4j12-1.5.8.jar"
+  location="D:\Program Files\MyEclipse Professional 2014\configuration\org.eclipse.osgi\bundles\101\1\.cp\myeclipse-data\3.3\lib\core\required\slf4j-log4j12-1.5.8.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-ehcache-1.2.3.jar"
+  location="D:\Program Files\MyEclipse Professional 2014\configuration\org.eclipse.osgi\bundles\101\1\.cp\myeclipse-data\3.2\lib\core\ehcache-1.2.3.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-ejb3-persistence.jar"
+  location="D:\Program Files\MyEclipse Professional 2014\configuration\org.eclipse.osgi\bundles\101\1\.cp\myeclipse-data\3.3\lib\entitymanager\ejb3-persistence.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-hibernate-annotations.jar"
+  location="D:\Program Files\MyEclipse Professional 2014\configuration\org.eclipse.osgi\bundles\101\1\.cp\myeclipse-data\3.3\lib\entitymanager\hibernate-annotations.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-hibernate-commons-annotations.jar"
+  location="D:\Program Files\MyEclipse Professional 2014\configuration\org.eclipse.osgi\bundles\101\1\.cp\myeclipse-data\3.3\lib\entitymanager\hibernate-commons-annotations.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-hibernate-entitymanager.jar"
+  location="D:\Program Files\MyEclipse Professional 2014\configuration\org.eclipse.osgi\bundles\101\1\.cp\myeclipse-data\3.3\lib\entitymanager\hibernate-entitymanager.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-hibernate-validator.jar"
+  location="D:\Program Files\MyEclipse Professional 2014\configuration\org.eclipse.osgi\bundles\101\1\.cp\myeclipse-data\3.3\lib\entitymanager\hibernate-validator.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-jsf-api.jar"
+  location="D:\Program Files\MyEclipse Professional 2014\configuration\org.eclipse.osgi\bundles\99\1\.cp\data\1.2\Mojarra\1.2_04\jsf-api.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-jsf-impl.jar"
+  location="D:\Program Files\MyEclipse Professional 2014\configuration\org.eclipse.osgi\bundles\99\1\.cp\data\1.2\Mojarra\1.2_04\jsf-impl.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-antlr-2.7.6.jar"
+  location="D:\Temp20140414\MSH_Compressed\MSH_0717_home\MSH_0717A\MSH\WebRoot\WEB-INF\lib\antlr-2.7.6.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-aopalliance-1.0.jar"
+  location="D:\Temp20140414\MSH_Compressed\MSH_0717_home\MSH_0717A\MSH\WebRoot\WEB-INF\lib\aopalliance-1.0.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-asm-3.3.jar"
+  location="D:\Temp20140414\MSH_Compressed\MSH_0717_home\MSH_0717A\MSH\WebRoot\WEB-INF\lib\asm-3.3.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-asm-commons-3.3.jar"
+  location="D:\Temp20140414\MSH_Compressed\MSH_0717_home\MSH_0717A\MSH\WebRoot\WEB-INF\lib\asm-commons-3.3.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-asm-tree-3.3.jar"
+  location="D:\Temp20140414\MSH_Compressed\MSH_0717_home\MSH_0717A\MSH\WebRoot\WEB-INF\lib\asm-tree-3.3.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-commons-collections-3.1.jar"
+  location="D:\Temp20140414\MSH_Compressed\MSH_0717_home\MSH_0717A\MSH\WebRoot\WEB-INF\lib\commons-collections-3.1.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-commons-dbcp-1.4.jar"
+  location="D:\Temp20140414\MSH_Compressed\MSH_0717_home\MSH_0717A\MSH\WebRoot\WEB-INF\lib\commons-dbcp-1.4.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-commons-fileupload-1.2.2.jar"
+  location="D:\Temp20140414\MSH_Compressed\MSH_0717_home\MSH_0717A\MSH\WebRoot\WEB-INF\lib\commons-fileupload-1.2.2.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-commons-io-2.2.jar"
+  location="D:\Temp20140414\MSH_Compressed\MSH_0717_home\MSH_0717A\MSH\WebRoot\WEB-INF\lib\commons-io-2.2.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-commons-lang-2.5.jar"
+  location="D:\Temp20140414\MSH_Compressed\MSH_0717_home\MSH_0717A\MSH\WebRoot\WEB-INF\lib\commons-lang-2.5.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-commons-logging-1.1.1.jar"
+  location="D:\Temp20140414\MSH_Compressed\MSH_0717_home\MSH_0717A\MSH\WebRoot\WEB-INF\lib\commons-logging-1.1.1.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-commons-pool-1.5.4.jar"
+  location="D:\Temp20140414\MSH_Compressed\MSH_0717_home\MSH_0717A\MSH\WebRoot\WEB-INF\lib\commons-pool-1.5.4.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-dom4j-1.6.1.jar"
+  location="D:\Temp20140414\MSH_Compressed\MSH_0717_home\MSH_0717A\MSH\WebRoot\WEB-INF\lib\dom4j-1.6.1.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-freemarker-2.3.18.jar"
+  location="D:\Temp20140414\MSH_Compressed\MSH_0717_home\MSH_0717A\MSH\WebRoot\WEB-INF\lib\freemarker-2.3.18.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-javassist-3.11.0.GA.jar"
+  location="D:\Temp20140414\MSH_Compressed\MSH_0717_home\MSH_0717A\MSH\WebRoot\WEB-INF\lib\javassist-3.11.0.GA.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-jaxen-1.1.1.jar"
+  location="D:\Temp20140414\MSH_Compressed\MSH_0717_home\MSH_0717A\MSH\WebRoot\WEB-INF\lib\jaxen-1.1.1.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-json-lib-2.3-jdk15.jar"
+  location="D:\Temp20140414\MSH_Compressed\MSH_0717_home\MSH_0717A\MSH\WebRoot\WEB-INF\lib\json-lib-2.3-jdk15.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-jstl-1.2.jar"
+  location="D:\Temp20140414\MSH_Compressed\MSH_0717_home\MSH_0717A\MSH\WebRoot\WEB-INF\lib\jstl-1.2.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-jta-1.1.jar"
+  location="D:\Temp20140414\MSH_Compressed\MSH_0717_home\MSH_0717A\MSH\WebRoot\WEB-INF\lib\jta-1.1.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-mail.jar"
+  location="D:\Temp20140414\MSH_Compressed\MSH_0717_home\MSH_0717A\MSH\WebRoot\WEB-INF\lib\mail.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-mysql-connector-java-commercial-5.1.25-bin.jar"
+  location="D:\Temp20140414\MSH_Compressed\MSH_0717_home\MSH_0717A\MSH\WebRoot\WEB-INF\lib\mysql-connector-java-commercial-5.1.25-bin.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-ognl-3.0.3.jar"
+  location="D:\Temp20140414\MSH_Compressed\MSH_0717_home\MSH_0717A\MSH\WebRoot\WEB-INF\lib\ognl-3.0.3.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-poi-3.9-20121203.jar"
+  location="D:\Temp20140414\MSH_Compressed\MSH_0717_home\MSH_0717A\MSH\WebRoot\WEB-INF\lib\poi-3.9-20121203.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-poi-examples-3.9-20121203.jar"
+  location="D:\Temp20140414\MSH_Compressed\MSH_0717_home\MSH_0717A\MSH\WebRoot\WEB-INF\lib\poi-examples-3.9-20121203.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-poi-excelant-3.9-20121203.jar"
+  location="D:\Temp20140414\MSH_Compressed\MSH_0717_home\MSH_0717A\MSH\WebRoot\WEB-INF\lib\poi-excelant-3.9-20121203.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-poi-ooxml-3.9-20121203.jar"
+  location="D:\Temp20140414\MSH_Compressed\MSH_0717_home\MSH_0717A\MSH\WebRoot\WEB-INF\lib\poi-ooxml-3.9-20121203.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-poi-ooxml-schemas-3.9-20121203.jar"
+  location="D:\Temp20140414\MSH_Compressed\MSH_0717_home\MSH_0717A\MSH\WebRoot\WEB-INF\lib\poi-ooxml-schemas-3.9-20121203.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-poi-scratchpad-3.9-20121203.jar"
+  location="D:\Temp20140414\MSH_Compressed\MSH_0717_home\MSH_0717A\MSH\WebRoot\WEB-INF\lib\poi-scratchpad-3.9-20121203.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-quartz-all-1.6.0.jar"
+  location="D:\Temp20140414\MSH_Compressed\MSH_0717_home\MSH_0717A\MSH\WebRoot\WEB-INF\lib\quartz-all-1.6.0.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-spring-aop-3.1.1.RELEASE.jar"
+  location="D:\Temp20140414\MSH_Compressed\MSH_0717_home\MSH_0717A\MSH\WebRoot\WEB-INF\lib\spring-aop-3.1.1.RELEASE.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-spring-asm-3.1.1.RELEASE.jar"
+  location="D:\Temp20140414\MSH_Compressed\MSH_0717_home\MSH_0717A\MSH\WebRoot\WEB-INF\lib\spring-asm-3.1.1.RELEASE.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-spring-beans-3.1.1.RELEASE.jar"
+  location="D:\Temp20140414\MSH_Compressed\MSH_0717_home\MSH_0717A\MSH\WebRoot\WEB-INF\lib\spring-beans-3.1.1.RELEASE.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-spring-context-3.1.1.RELEASE.jar"
+  location="D:\Temp20140414\MSH_Compressed\MSH_0717_home\MSH_0717A\MSH\WebRoot\WEB-INF\lib\spring-context-3.1.1.RELEASE.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-spring-context-support-3.1.1.RELEASE.jar"
+  location="D:\Temp20140414\MSH_Compressed\MSH_0717_home\MSH_0717A\MSH\WebRoot\WEB-INF\lib\spring-context-support-3.1.1.RELEASE.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-spring-core-3.1.1.RELEASE.jar"
+  location="D:\Temp20140414\MSH_Compressed\MSH_0717_home\MSH_0717A\MSH\WebRoot\WEB-INF\lib\spring-core-3.1.1.RELEASE.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-spring-expression-3.1.1.RELEASE.jar"
+  location="D:\Temp20140414\MSH_Compressed\MSH_0717_home\MSH_0717A\MSH\WebRoot\WEB-INF\lib\spring-expression-3.1.1.RELEASE.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-spring-jdbc-3.1.1.RELEASE.jar"
+  location="D:\Temp20140414\MSH_Compressed\MSH_0717_home\MSH_0717A\MSH\WebRoot\WEB-INF\lib\spring-jdbc-3.1.1.RELEASE.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-spring-orm-3.1.1.RELEASE.jar"
+  location="D:\Temp20140414\MSH_Compressed\MSH_0717_home\MSH_0717A\MSH\WebRoot\WEB-INF\lib\spring-orm-3.1.1.RELEASE.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-spring-test-2.5.6.jar"
+  location="D:\Temp20140414\MSH_Compressed\MSH_0717_home\MSH_0717A\MSH\WebRoot\WEB-INF\lib\spring-test-2.5.6.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-spring-tx-3.1.1.RELEASE.jar"
+  location="D:\Temp20140414\MSH_Compressed\MSH_0717_home\MSH_0717A\MSH\WebRoot\WEB-INF\lib\spring-tx-3.1.1.RELEASE.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-spring-web-3.1.1.RELEASE.jar"
+  location="D:\Temp20140414\MSH_Compressed\MSH_0717_home\MSH_0717A\MSH\WebRoot\WEB-INF\lib\spring-web-3.1.1.RELEASE.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-sqlserver2008-jdbc4.jar"
+  location="D:\Temp20140414\MSH_Compressed\MSH_0717_home\MSH_0717A\MSH\WebRoot\WEB-INF\lib\sqlserver2008-jdbc4.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-struts2-core-2.3.1.jar"
+  location="D:\Temp20140414\MSH_Compressed\MSH_0717_home\MSH_0717A\MSH\WebRoot\WEB-INF\lib\struts2-core-2.3.1.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-struts2-json-plugin-2.3.1.jar"
+  location="D:\Temp20140414\MSH_Compressed\MSH_0717_home\MSH_0717A\MSH\WebRoot\WEB-INF\lib\struts2-json-plugin-2.3.1.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-struts2-junit-plugin-2.2.1.jar"
+  location="D:\Temp20140414\MSH_Compressed\MSH_0717_home\MSH_0717A\MSH\WebRoot\WEB-INF\lib\struts2-junit-plugin-2.2.1.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-struts2-spring-plugin-2.3.1.jar"
+  location="D:\Temp20140414\MSH_Compressed\MSH_0717_home\MSH_0717A\MSH\WebRoot\WEB-INF\lib\struts2-spring-plugin-2.3.1.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-xbean_xpath.jar"
+  location="D:\Temp20140414\MSH_Compressed\MSH_0717_home\MSH_0717A\MSH\WebRoot\WEB-INF\lib\xbean_xpath.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-xmlbeans-2.3.0.jar"
+  location="D:\Temp20140414\MSH_Compressed\MSH_0717_home\MSH_0717A\MSH\WebRoot\WEB-INF\lib\xmlbeans-2.3.0.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-xmlbeans-qname.jar"
+  location="D:\Temp20140414\MSH_Compressed\MSH_0717_home\MSH_0717A\MSH\WebRoot\WEB-INF\lib\xmlbeans-qname.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-xwork-core-2.3.1.jar"
+  location="D:\Temp20140414\MSH_Compressed\MSH_0717_home\MSH_0717A\MSH\WebRoot\WEB-INF\lib\xwork-core-2.3.1.jar" model-entity="FileSystemJar"/>
+ <web SERVLET_VERSION="2.4" model-entity="JstWeb" model-path="/web.xml">
+  <module URI="/WEB-INF/faces-config.xml" model-entity="WebJSFModule"
+   model-path="/faces-config.xml" src="src" web-root="WEB-ROOT"/>
+ </web>
+</file-systems>
