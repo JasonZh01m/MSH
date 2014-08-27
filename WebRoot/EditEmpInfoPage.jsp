@@ -125,11 +125,13 @@
 								</div>
 								<div class="input-group input-group-sm editemp_form editemp_form0">
 								  <span class="input-group-addon">English Name:</span>
-								  <input disabled="disabled" value="<s:property value="#session.eip_emp.nameEnglish" default="#English Name"/>" id="eeip_englishname" type="text" class="form-control red-tooltip" name="eeip_englishname" placeholder="English Name" >
+								  <input value="<s:property value="#session.eip_emp.nameEnglish" default="#English Name"/>" id="eeip_englishname" type="text" class="form-control red-tooltip" name="eeip_englishname" placeholder="English Name" >
 								</div>
 								<div class="input-group input-group-sm editemp_form editemp_form2">
 								  <span class="input-group-addon" >Login ID:</span>
-								  <input disabled="disabled" value="<s:property	value="#session.eip_emp.empLoginId" default="#LoginID"/>" id="eeip_loginid" type="text" class="form-control red-tooltip" name="eeip_loginid" placeholder="Login ID">
+								  <input value="<s:property	value="#session.eip_emp.empLoginId" default="#LoginID"/>" id="eeip_loginid" 
+								  type="text" class="form-control red-tooltip" placeholder="Login ID">
+								  <input value="<s:property	value="#session.eip_emp.empLoginId" />" type="hidden" name="eeip_loginid">
 								</div>
 								<!-- <div class="input-group input-group-sm editemp_form editemp_form2">
 								  <span class="input-group-addon">Gender:</span>

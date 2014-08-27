@@ -103,10 +103,10 @@
 			<div class="tabbable" id="">
 				<ul class="nav nav-tabs">
 					<li>
-						<a href="#panel-vacationInfoPanel" data-toggle="tab">Vacation Left Info:</a>
+						<a href="#panel-vacationInfoPanel" data-toggle="tab">Vacation Left Info</a>
 					</li>
 					<li class="active">
-						<a href="#panel-vacationHistoryPanel" data-toggle="tab">Vacation History:</a>
+						<a href="#panel-vacationHistoryPanel" data-toggle="tab">Vacation History</a>
 					</li>
 				</ul>
 				<div class="tab-content">

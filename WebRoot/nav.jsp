@@ -94,9 +94,14 @@
 									 <a href="loadMyVacationInfoPage">My Vacation</a>
 								</li>
 								<li>
+									 <a href="myEmpHistory">My Info History</a>
+								</li>
+								<li>
+									 <a href="loadMyAbsenceOvertimeTrack">Absence & Overtime</a>
+								</li>
+								<li>
 									 <a href="absenceRequestAction_loadRequestPage">Request</a>
 								</li>
-								
 								<li class="divider">
 								</li>
 							</ul>
@@ -104,7 +109,8 @@
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						<a class="navbar-brand" >Welcome <s:property value="#session.login.emp.nameEnglish"/> </a>
-						<li class="dropdown">
+						<a href="logoffAction" class="navbar-brand"><strong><span class="glyphicon glyphicon-off"></span></strong></a>
+						<%-- <li class="dropdown">
 							 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"></span><strong class="caret"></strong></a>
 							<ul class="dropdown-menu">
 								<li>
@@ -114,7 +120,7 @@
 									<a href="logoffAction"><strong><span class="glyphicon glyphicon-off"></span>&emsp;LOG OFF</strong></a>
 								</li>
 							</ul>
-						</li>
+						</li> --%>
 					</ul>
 				</div>
 			</nav>

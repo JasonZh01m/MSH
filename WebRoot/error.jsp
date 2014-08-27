@@ -1,5 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<%@ taglib prefix="s" uri="/struts-tags"%>
+<%@taglib uri="/struts-tags" prefix="s"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -23,9 +23,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
     <h5>出错了！</h5>
     <p style="color: red;"><s:property value="#session.globalError"/></p>
-     <div style="color:red;">
-    	<s:fielderror/>
-    </div>
-    <p><h4><a href="login.jsp">Login</a></h4></p>
+    <!-- <p><h4><a href="login.jsp">Login</a></h4></p> -->
   </body>
 </html>

@@ -72,8 +72,6 @@ public class VacationLeftAdminAction extends BaseAction {
 			VacationLeftAdminEntity vacationLeftAdminEntity) {
 		this.vacationLeftAdminEntity = vacationLeftAdminEntity;
 	}
-
-
 	
 	
 	public String getVacationinfo_emploginid() {

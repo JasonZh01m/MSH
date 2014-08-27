@@ -146,6 +146,7 @@
         <action name="toEmpHistoryInfoPage" class="toEmpHistoryInfoPage">
         	<result type="redirect">EmpHistoryTrack.jsp</result>
         </action>
+        
         <action name="timeSheetTrackAction" class="timeSheetTrackAction">
         	<result type="redirect">TimeSheetTrack.jsp</result>
         </action>
@@ -297,6 +298,27 @@
 				MyPayrollPage.jsp
 			</result>
 			<interceptor-ref name="NormalAuthStack"></interceptor-ref>
+		</action>
+		
+		<action name="myEmpHistory" class="toEmpHistoryInfoPage" method="myEmpHistory">
+			<result type="redirect">
+				MyEmpHistoryInfo.jsp
+			</result>
+			<interceptor-ref name="NormalAuthStack"></interceptor-ref>
+		</action>
+		
+		<action name="getMyAbsenceOvertimeInfoByTime" class="absenceOvertimeTrackAction" method="getMyAbsenceOvertimeInfoByTime">
+			<result type="redirect">
+				MyAbsenceOvertimeTrack.jsp
+			</result>
+			<interceptor-ref name="NormalAuthStack"></interceptor-ref>
+		</action>
+		
+		<action name="loadMyAbsenceOvertimeTrack" class="absenceOvertimeTrackAction" method="loadMyAbsenceOvertimeTrack">
+			<result type="redirect">
+				MyAbsenceOvertimeTrack.jsp
+			</result>
+			<interceptor-ref name="NormalAuthStack"/>
 		</action>
 		
 		
